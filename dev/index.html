@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Blank Template</title>
+  <link rel="stylesheet" href="./assets/css/main.css">
+</head>
+<body>
+  <header id="header" class="header">
+      <div class="container">
+          <div class="row no-gutters">
+              <div class="col-6 header__column">
+                  <a href="/" class="header__logo logo">
+                      <img src="assets/images/kfund-logo.svg" alt="logo">
+                  </a>
+              </div>
+              <div class="col-6 header__column header__column--right">
+                  <div class="header__additional">
+                      <div class="header__search">
+                          <button class="btn--nobtn">
+                              <i class="kf-icon kf-icon-search icon__search" aria-hidden="true"></i>
+                          </button>
+                      </div>
+                      <ul class="header__lang lang">
+                          <li class="lang__item lang__item--active"><a href="#" class="lang__link">Укр</a></li>
+                          <li class="lang__item"><a href="#" class="lang__link">Рус</a></li>
+                      </ul>
+                  </div>
+  
+                  <nav class="header__nav" role="navigation">
+                      <ul class="header__menu menu">
+                          <li><a href="#" class="menu__link">підприємництво</a></li>
+                          <li><a href="#" class="menu__link">Освіта</a></li>
+                          <li><a href="#" class="menu__link">книги</a></li>
+                          <!--<li><a href="#">календар</a></li>-->
+                      </ul>
+                  </nav>
+  
+                  <button class="burger header__burger">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                  </button>
+              </div>
+          </div>
+      </div>
+  </header>
+  
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav js_mobile-nav">
+      <nav>
+          <ul class="mobile-nav__menu">
+          </ul>
+      </nav>
+      <button class="burger mobile-nav__burger">
+          <span></span>
+          <span></span>
+          <span></span>
+      </button>
+  </div>
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="assets/js/libs/jquery-1.11.2.min.js"><\/script>')</script>
+  <script src="./assets/scripts/common.js"></script>
+</body>
+</html>
