@@ -1,4 +1,5 @@
 jQuery(document).ready(function ($) {
+	initInsta();
 });
 
 jQuery(window).load(function () {
@@ -28,3 +29,20 @@ var mobileNav = {
 		$(this.className).hasClass(this.activeClass) ? this.close() : this.open();
 	}
 };
+
+function initInsta() {
+	var $insta = $('.insta');
+	var dataImg;
+
+	$insta.on('click', function(){
+		if ($(event.target).hasClass('insta__item')) {
+			dataImg = $(event.target).data('img');
+			$('.modal').addClass('open');
+			$('.modal__body').css({'background-image': 'url(' + dataImg + ')'});
+		}
+	})
+
+	$('.modal').on('click', function(){
+		$('.modal').removeClass('open');
+	});
+}
