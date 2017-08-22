@@ -1,31 +1,48 @@
 'use strict';
  
-var gulp = require('gulp');
-var sass = require('gulp-sass');
-var browserSync = require('browser-sync');
-var sourcemaps = require('gulp-sourcemaps');
-var rigger = require('gulp-rigger');
+var gulp            = require('gulp'),
+    sass            = require('gulp-sass'),
+    browserSync     = require('browser-sync'),
+    sourcemaps      = require('gulp-sourcemaps'),
+    rigger          = require('gulp-rigger'),
+    notify          = require('gulp-notify');
  
-var output = './dev/';
+    
+var path = {
+  dev : {
+    output : './dev/',
+    outputHtml : './dev/templates/*.html',
+    outputSass : './dev/assets/sass/**/*.scss',
+    outputStyles : './dev/assets/css',
+    outputScripts: '' 
+  },
+  release : {
+    output  : './release/'
+  }
+}
+    
 
 gulp.task('html', function () {
-    return gulp.src('./dev/templates/*.html')
+    return gulp.src(path.dev.outputHtml)
         .pipe(rigger())
-        .pipe(gulp.dest(output));
+        .pipe(gulp.dest(path.dev.output))
+        .pipe(browserSync.reload({stream:true}));
 });
 
 gulp.task('sass', function () {
-  return gulp.src('./dev/assets/sass/**/*.scss')
-    .pipe(sourcemaps.init())
-    .pipe(sass().on('error', sass.logError))
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest('./dev/assets/css'));
+  return gulp.src(path.dev.outputSass)
+    // .pipe(sourcemaps.init())
+    .pipe(sass())
+      .on('error', notify.onError())
+    // .pipe(sourcemaps.write())
+    .pipe(gulp.dest(path.dev.outputStyles))
+    .pipe(browserSync.reload({stream:true}));
 });
 
 gulp.task('browser-sync', function() {
-	browserSync.init(null, {
+	browserSync.init({
 		server: {
-			baseDir: output
+			baseDir: path.dev.output
 		}
 	});
 });
@@ -35,6 +52,6 @@ gulp.task('bs-reload', function () {
 });
  
 gulp.task('default', ['html','sass', 'browser-sync'], function () {
-  gulp.watch('./dev/assets/sass/**/*.scss', ['sass', 'bs-reload']);
+  gulp.watch('./dev/assets/sass/**/*.scss', ['sass']);
   gulp.watch('./dev/templates/**/*.html', ['html']);
 });
