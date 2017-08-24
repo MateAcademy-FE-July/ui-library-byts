@@ -2,7 +2,7 @@ jQuery(document).ready(function ($) {
 	initInsta();
 });
 
-jQuery(window).load(function () {
+jQuery(window).on('load', function () {
 	mobileNav.init('.header__menu');
 });
 
